@@ -12,3 +12,13 @@ def index(request):
 class GetSnipte(generics.ListAPIView):
     queryset = Snipte.objects.all()
     serializer_class = SnipteSerializer
+
+class PostSnipte(generics.CreateAPIView):
+    queryset = Snipte.objects.all()
+    serializer_class = SnipteSerializer
+class UpdateSnipte(generics.UpdateAPIView):
+    queryset = Snipte.objects.all()
+    serializer_class = SnipteSerializer
+class DeleteSnipte(generics.DestroyAPIView):
+    queryset = Snipte.objects.all()
+    serializer_class = SnipteSerializer

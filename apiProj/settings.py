@@ -37,7 +37,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'req',
     "rest_framework",  # new
+    'rest_framework_simplejwt',
+
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,10 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CORS_ALLOWED_ORIGINS = [
 #     "http://127.0.0.1:5501/",
 # ]
-# CORS_ALLOWED_ORIGINS = ['*']
+CORS_ALLOWED_ORIGINS = ['*']
 
 # Allow all origins to send requests
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 # If you need to allow credentials (cookies, authorization headers, etc.)
 CORS_ALLOW_CREDENTIALS = True
